@@ -1,0 +1,35 @@
+.filter {
+    cursor: pointer;
+    &[type="text"] {
+        margin-left: 20px;
+        padding: 5px;
+        font-size: 14px;
+        max-width: 125px;
+    }
+
+    &[type="checkbox"] {
+        display: none;
+        
+    }
+}
+
+.filter-label {
+    position: relative;
+    .filter[type="checkbox"] {
+
+    +.pseudocheckbox {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: #FFF;
+        border: 1px solid black;
+        margin-right: 10px;
+    }
+    
+        &:checked + .pseudocheckbox {
+            background-color: #2196f3;
+        }
+    }
+
+    
+}

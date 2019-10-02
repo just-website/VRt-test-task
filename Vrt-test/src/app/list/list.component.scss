@@ -1,0 +1,46 @@
+@import '~@angular/material/theming';
+
+$app-primary: mat-palette($mat-blue);
+$primary: mat-color($app-primary);
+
+.list {
+    max-height: 380px;
+    overflow-y: scroll;
+}
+
+.item {
+    background-color: $primary;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    &__title {
+
+        color: #FFF;
+    }
+
+    .item__flag {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        background-color: #fff;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url('../../assets/img/icons/default.png');
+
+        &.flower {
+            background-image: url('../../assets/img/icons/flower.png');
+        }
+        &.heart {
+            background-image: url('../../assets/img/icons/like.png');
+        }
+        &.sun {
+            background-image: url('../../assets/img/icons/sun.png');
+        }
+        &.flash {
+            background-image: url('../../assets/img/icons/flash.png');
+        }
+    }
+}

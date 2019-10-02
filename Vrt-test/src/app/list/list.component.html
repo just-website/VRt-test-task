@@ -1,0 +1,11 @@
+<mat-list role="list" class="list">
+    <mat-list-item role="listitem" *ngFor="let item of listItems">
+        <div class="item">
+            <div class="item__title">
+                {{item.name}}
+            </div>
+
+            <div class="item__flag" *ngFor="let flag of item.flags" [ngClass]="flag"></div>
+        </div>
+    </mat-list-item>
+</mat-list>
