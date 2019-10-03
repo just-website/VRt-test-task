@@ -1,0 +1,57 @@
+.filter {
+    cursor: pointer;
+    &[type="text"] {
+        margin-left: 20px;
+        padding: 5px;
+        font-size: 14px;
+        max-width: 125px;
+    }
+
+    &[type="checkbox"] {
+        display: none;
+        
+    }
+}
+
+.filter-label {
+    position: relative;
+    .filter[type="checkbox"] {
+
+    +.pseudocheckbox {
+        cursor: pointer;
+        display: block;
+        width: 18px;
+        height: 18px;
+        background-color: #FFF;
+        border: 2px solid black;
+        margin-right: 10px;
+        border-radius: 2px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url('../../assets/img/icons/default.png');
+
+        &.flower {
+        background-image: url('../../assets/img/icons/flower.png');
+        }
+
+        &.heart {
+        background-image: url('../../assets/img/icons/like.png');
+        }
+
+        &.sun {
+        background-image: url('../../assets/img/icons/sun.png');
+        }
+
+        &.flash {
+        background-image: url('../../assets/img/icons/flash.png');
+        }
+    }
+    
+        &:checked + .pseudocheckbox {
+            background-color: #2196f3;
+        }
+    }
+
+    
+}

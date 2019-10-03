@@ -1,5 +1,5 @@
 <mat-list role="list" class="list">
-    <mat-list-item role="listitem" *ngFor="let item of listItems">
+    <mat-list-item role="listitem" *ngFor="let item of listItems" (click)=selectItem(item)>
         <div class="item">
             <div class="item__title">
                 {{item.name}}

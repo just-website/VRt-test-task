@@ -1,0 +1,45 @@
+<div class="main-header">
+    <div class="container">
+        <h1>Two panel App</h1>
+    </div>
+</div>
+<div class="container">
+
+    <mat-card class="panel">
+        <div class="panel__header">
+            <app-sorting [(sortItems)]="filteredItemsListLeft" [method]="'name'"></app-sorting>
+            <app-filter [type]="'text'" [method]="null" [listItems]="itemsListLeft"
+                (onFilter)="setFilteredData($event, 'filteredItemsListLeft')">
+            </app-filter>
+        </div>
+        <mat-card-content>
+            <app-list [listItems]="filteredItemsListLeft" (selectChanged)="showInfo($event)"></app-list>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="panel panel--info">
+        <div class="panel__header">
+            Info
+        </div>
+        <mat-card-content>
+            <p>
+                name: <span *ngIf="selectedItem">{{selectedItem.name}}</span>
+            </p>
+            <p class="item-wrapper">
+                flags: <span *ngIf="selectedItem" class="item">
+                    <div class="item__flag" *ngFor="let flag of selectedItem.flags" [ngClass]="flag"></div>
+                </span>
+            </p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="panel">
+        <div class="panel__header">
+            <app-filter [type]="'checkbox'" *ngFor="let filter of filters" [method]="filter"
+                [listItems]="filteredItemsListRight"></app-filter>
+        </div>
+        <mat-card-content>
+            <app-list [listItems]="filteredItemsListRight"></app-list>
+        </mat-card-content>
+    </mat-card>
+</div>
