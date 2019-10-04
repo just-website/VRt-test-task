@@ -7,27 +7,14 @@
 
     <mat-card class="panel">
         <div class="panel__header">
-            <app-sorting 
-                [(sortItems)]="filteredItemsListLeft" 
-                [method]="'name'"
-            ></app-sorting>
-            <app-filter 
-                [type]="'text'" 
-                [method]="null" 
-                [listItems]="itemsListLeft"
-                (onChange)="filteringLeftList($event)"
-            >
+            <app-sorting [(sortItems)]="filteredItemsListLeft" [method]="'name'"></app-sorting>
+            <app-filter [type]="'text'" [method]="null" [listItems]="itemsListLeft"
+                (onChange)="filteringLeftList($event.target.value)">
             </app-filter>
         </div>
-        <mat-card-content
-            
-        >
-            <app-list
-                (onMoveItem)=reinitLists($event)
-                [listItems]="filteredItemsListLeft" 
-                (selectChanged)="showInfo($event)"
-                [listName]="'filteredItemsListLeft'"
-            ></app-list>
+        <mat-card-content>
+            <app-list (onMoveItem)=reinitLists($event) [listItems]="filteredItemsListLeft"
+                (selectChanged)="showInfo($event)" [listName]="'itemsListLeft'"></app-list>
         </mat-card-content>
     </mat-card>
 
@@ -41,10 +28,7 @@
             </p>
             <p class="item-wrapper">
                 flags: <span *ngIf="selectedItem" class="item">
-                    <div class="item__flag" 
-                        *ngFor="let flag of selectedItem.flags" 
-                        [ngClass]="flag"
-                    ></div>
+                    <div class="item__flag" *ngFor="let flag of selectedItem.flags" [ngClass]="flag"></div>
                 </span>
             </p>
         </mat-card-content>
@@ -52,22 +36,12 @@
 
     <mat-card class="panel">
         <div class="panel__header">
-            <app-filter 
-                [type]="'checkbox'" 
-                *ngFor="let filter of rightPanelFilters" 
-                [method]="filter.type"
-                (onChange)="filteringRightList($event)"
-            ></app-filter>
+            <app-filter [type]="'checkbox'" *ngFor="let filter of rightPanelFilters" [method]="filter.type"
+                (onChange)="filteringRightList($event)"></app-filter>
         </div>
-        <mat-card-content
-            
-        >
-            <app-list 
-                (onMoveItem)=reinitLists($event)
-                [listItems]="filteredItemsListRight"
-                (selectChanged)="showInfo($event)"
-                [listName]="'filteredItemsListRight'"
-            ></app-list>
+        <mat-card-content>
+            <app-list (onMoveItem)=reinitLists($event) [listItems]="filteredItemsListRight"
+                (selectChanged)="showInfo($event)" [listName]="'itemsListRight'"></app-list>
         </mat-card-content>
     </mat-card>
 </div>

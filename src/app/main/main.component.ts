@@ -27,6 +27,7 @@ export class MainComponent implements OnInit {
   }
   private leftList = 'leftList';
   private rightList = 'rightList';
+  private lastInputValue;
 
   private itemsListLeft;
   private filteredItemsListLeft;
@@ -57,22 +58,26 @@ export class MainComponent implements OnInit {
   }
 
   filteringLeftList(event?) {
-    const value = event ? event.target.value : '';
+    const value = event ? event : '';
+    this.lastInputValue = value;
     this.filteredItemsListLeft = this.filterData.getFiltedText(this.itemsListLeft, value)
   }
 
   reinitLists(event) {
-    // console.log(this.dataList.getStoreItems('leftList'));
+    console.log(event);
 
-    if (event.name === 'filteredItemsListRight') {
-      this.itemsListRight = event.data;
-      this.itemsListLeft = event.prevData;
+    if (event.listName === 'itemsListRight') {
+      this.itemsListRight.push(event.item);
+      this.itemsListLeft = this.itemsListLeft.filter(item => JSON.stringify(item) != JSON.stringify(event.item));
     } else {
-      this.itemsListLeft = event.data;
-      this.itemsListRight = event.prevData;
+      this.itemsListLeft.push(event.item);
+      this.itemsListRight = this.itemsListRight.filter(item => JSON.stringify(item) != JSON.stringify(event.item));
     }
-    this.filteringLeftList();
+
+    this.filteringLeftList(this.lastInputValue);
     this.filteringRightList();
+    // console.log(this.itemsListRight, this.itemsListLeft);
+
   }
 
   showInfo(item) {

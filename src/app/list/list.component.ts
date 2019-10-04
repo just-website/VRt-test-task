@@ -21,6 +21,8 @@ export class ItemListComponent {
   }
 
   drop(event: CdkDragDrop<string[]>) {
+    console.log();
+
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -28,12 +30,13 @@ export class ItemListComponent {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
-      
+
       this.onMoveItem.emit({
-        name: this.listName, 
-        prevData: event.previousContainer.data, 
-        data: event.container.data
+        item: event.item.data,
+        listName: this.listName
       });
+      console.log(event.item.data);
+
     }
   }
 }

@@ -1,10 +1,5 @@
-<mat-list 
-    role="list" class="list"
-    cdkDropList 
-    [cdkDropListData]="listItems"
-    (cdkDropListDropped)="drop($event)"
->
-    <mat-list-item role="listitem" *ngFor="let item of listItems" (click)=selectItem(item) cdkDrag>
+<mat-list role="list" class="list" cdkDropList [cdkDropListData]="listItems" (cdkDropListDropped)="drop($event)">
+    <mat-list-item role="listitem" *ngFor="let item of listItems" (click)=selectItem(item) [cdkDragData]="item" cdkDrag>
         <div class="item">
             <div class="item__title">
                 {{item.name}}
