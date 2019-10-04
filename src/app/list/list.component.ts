@@ -35,8 +35,6 @@ export class ItemListComponent {
         item: event.item.data,
         listName: this.listName
       });
-      console.log(event.item.data);
-
     }
   }
 }

@@ -64,19 +64,16 @@ export class MainComponent implements OnInit {
   }
 
   reinitLists(event) {
-    console.log(event);
-
     if (event.listName === 'itemsListRight') {
+      this.itemsListLeft.splice(this.itemsListLeft.indexOf(event.item), 1);
       this.itemsListRight.push(event.item);
-      this.itemsListLeft = this.itemsListLeft.filter(item => JSON.stringify(item) != JSON.stringify(event.item));
-    } else {
-      this.itemsListLeft.push(event.item);
-      this.itemsListRight = this.itemsListRight.filter(item => JSON.stringify(item) != JSON.stringify(event.item));
-    }
 
+    } else {
+      this.itemsListRight.splice(this.itemsListRight.indexOf(event.item), 1);
+      this.itemsListLeft.push(event.item);
+    }
     this.filteringLeftList(this.lastInputValue);
     this.filteringRightList();
-    // console.log(this.itemsListRight, this.itemsListLeft);
 
   }
 
