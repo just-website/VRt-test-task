@@ -21,8 +21,6 @@ export class ItemListComponent {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log();
-
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

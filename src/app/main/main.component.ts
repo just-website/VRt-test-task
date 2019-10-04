@@ -13,8 +13,8 @@ export class MainComponent implements OnInit {
     private dataList: MockDataService,
     private filterData: FilterItemService
   ) {
-    this.itemsListLeft = this.dataList.getStoreItems(this.leftList, 10);
-    this.itemsListRight = this.dataList.getStoreItems(this.rightList, 10);
+    this.itemsListLeft = this.dataList.getStoreItems(this.leftList, 100);
+    this.itemsListRight = this.dataList.getStoreItems(this.rightList, 100);
     this.rightPanelFilters = this.dataList.getFilterList().map(type => {
       return {
         type,
@@ -67,14 +67,12 @@ export class MainComponent implements OnInit {
     if (event.listName === 'itemsListRight') {
       this.itemsListLeft.splice(this.itemsListLeft.indexOf(event.item), 1);
       this.itemsListRight.push(event.item);
-
     } else {
       this.itemsListRight.splice(this.itemsListRight.indexOf(event.item), 1);
       this.itemsListLeft.push(event.item);
     }
     this.filteringLeftList(this.lastInputValue);
     this.filteringRightList();
-
   }
 
   showInfo(item) {

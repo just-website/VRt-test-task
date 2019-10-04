@@ -12,20 +12,16 @@ interface StoreItem {
   filterData: LisItem[] | []
 }
 
-interface Store {
-  item: StoreItem
-}
-
 @Injectable({
   providedIn: 'root'
 })
 
 export class MockDataService {
-  public store = {};
   constructor(
     private filters: FilterListService
   ) { }
 
+  public store = <StoreItem>{};
   public getStoreItems(name: string, length?: number): LisItem[] {
 
     if (!this.store[name]) {
@@ -61,10 +57,6 @@ export class MockDataService {
   public getFilterList() {
     return this.filters.getFilters();
   }
-
-  // public getStoreItem(name: string): StoreItem {
-  //   return this.store[name].initialData;
-  // }
 
   public setStoreItem(name, data): void {
     this.store[name].filterData = data;
