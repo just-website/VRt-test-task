@@ -13,6 +13,7 @@ import { FilterComponent } from './filter/filter.component';
 import { SortingComponent } from './sorting/sorting.component';
 import { ItemListComponent } from './list/list.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import { ItemListComponent } from './list/list.component';
     DragDropModule,
     MatCardModule,
     MatListModule,
-    MatFormFieldModule
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

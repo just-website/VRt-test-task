@@ -9,31 +9,15 @@ export class FilterComponent implements OnInit {
 
   @Input('type') filterType: string;
   @Input('method') filterMethod: string;
-  @Input('listItems') data;
-  @Output() onFilter = new EventEmitter();
+  @Output() onChange = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  sortData(event) {
-    switch (this.filterType) {
-      case ('text'): this.textSort(event);
-        break;
-    }
-    //  === 'text'
-    // console.log(this.data);
-    // this.data = this.data.filter(element => element.flags.some(flag => flag.includes(event.target.value)));
-    // console.log(event.target.type);
-
-  }
-
-  textSort(event) {
-    const filteredData = this.data.filter(element => element.name.includes(event.target.value));
-    this.onFilter.emit(filteredData);
-    console.log(filteredData);
-
+  filterData(event) {
+    this.onChange.emit(event);
   }
 
 }

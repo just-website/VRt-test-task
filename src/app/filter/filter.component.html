@@ -1,5 +1,6 @@
 <label class="filter-label" for="{{filterMethod}}">
     <input [type]="filterType" [placeholder]=" filterType === 'text' ? 'text filter' : ''" class="filter"
-        id={{filterMethod}} (input)="sortData($event)" [value]="filterMethod" [checked]="filterType === 'checkbox'">
+        id={{filterMethod}} (input)="filterData($event)" [value]="filterMethod"
+        [checked]="filterType === 'checkbox'">
     <span class="pseudocheckbox" [ngClass]="filterMethod"></span>
 </label>
